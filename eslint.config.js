@@ -19,8 +19,11 @@ export default [
     plugins: {
       'react-hooks': reactHooks,
       'react-refresh': reactRefresh,
+      'simple-import-sort':simpleImportSort//new line
     },
     rules: {
+      'simple-import-sort/imports':'error',//new line
+      "simple-import-sort/exports": "error",//new line
       ...js.configs.recommended.rules,
       ...reactHooks.configs.recommended.rules,
       'no-unused-vars': ['error', { varsIgnorePattern: '^[A-Z_]' }],
