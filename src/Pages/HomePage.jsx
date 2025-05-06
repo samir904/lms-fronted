@@ -1,7 +1,7 @@
 import React from 'react'
 import HomeLayouts from '../Layouts/HomeLayouts'
 import { Link } from 'react-router-dom'
-
+import homepageimage from "../assets/homepage-image.png"
 export default function HomePage() {
 return (
     <HomeLayouts>
@@ -19,12 +19,12 @@ return (
 
                     <div className='space-x-6  ' >
                         <Link to="/courses" >
-                        <button className='bg-yellow-500 px-5 py-3 rounded-md font-semibold text-lg cursor-pointer hover:bg-yellow-600 transtion-all ease-in-out ' >
+                        <button className='bg-yellow-500 px-5 py-3 rounded-lg font-semibold duration-300 text-lg cursor-pointer hover:bg-yellow-600 transtion-all ease-in-out ' >
                             Explore courses
                         </button>
                         </Link>
                         <Link to="/contact" >
-                        <button className='border border-yellow-500 px-5 py-3 rounded-md font-semibold text-lg cursor-pointer hover:bg-yellow-600 transtion-all ease-in-out ' >
+                        <button className='border duration-300 border-yellow-500 px-5 py-3 rounded-lg font-semibold text-lg cursor-pointer hover:bg-yellow-600 transtion-all ease-in-out ' >
                             Contact Us
                         </button>
                         </Link>
@@ -32,7 +32,7 @@ return (
 
                     </div>
                     <div className='w-1/2 flex items-center justify-center ' >
-                    <img className='w-96' src="https://th.bing.com/th/id/OIP.PddMgtyqqu2RxrTuPYdW5wHaEK?pid=ImgDet&w=203&h=114&c=7&dpr=1.3" alt="homepage image" />
+                    <img className='w-150' src={homepageimage}alt="homepage image" />
                     </div>
             </div>
     </HomeLayouts>
