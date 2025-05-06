@@ -60,7 +60,7 @@ export default function HomeLayouts({children}) {
         </div>
         <div className='drawer-side w-0'>
           <label className='drawer-overlay' htmlFor="my-drawer"></label>
-          <ul className='menu p-4 w-64 sm:w-80 bg-base-200 text-base-content'>
+          <ul className='menu p-4  h-[100%] w-64 sm:w-80 bg-base-200 text-base-content'>
             <li className='w-fit absolute right-2 z-50'>
               <button onClick={hidedrawer}>
                 <CancelIcon fontSize='medium' />
@@ -88,12 +88,12 @@ export default function HomeLayouts({children}) {
             {
               !isLoggedIn &&(
                 <li className='absolute bottom-4 w-full' >
-                <div className='w-full flex items-center justify-center  ' >
-                    <button className='btn-primary  px-4 py-1 font-semibold rounded-md w-full ' >
+                <div className='w-[95%] flex items-center justify-center  ' >
+                    <button className=' btn btn-soft btn-primary  px-2 py-1 font-semibold rounded-md w-1/2 gap-2' >
                         <Link to="/login" >Login</Link>
                     </button>
-                    <button className='btn-secondary px-4 py-1 font-semibold rounded-md w-full ' >
-                        <Link to="/login" >Signup</Link>
+                    <button className='btn  btn-soft btn-secondary px-2 py-1 font-semibold rounded-md w-1/2 gap-2' >
+                        <Link to="/signup" >Signup</Link>
                     </button>
                 </div>
                 </li>
@@ -103,10 +103,10 @@ export default function HomeLayouts({children}) {
               isLoggedIn &&(
                 <li className='absolute bottom-4 w-full' >
                 <div className='w-full flex items-center justify-center  ' >
-                    <button className='btn-primary  px-4 py-1 font-semibold rounded-md w-full ' >
+                    <button className='btn btn-primary  px-4 py-1 font-semibold rounded-md w-full ' >
                         <Link to="/user/profile" >Profile</Link>
                     </button>
-                    <button className='btn-secondary px-4 py-1 font-semibold rounded-md w-full ' >
+                    <button className='btn btn-secondary px-4 py-1 font-semibold rounded-md w-full ' >
                         <Link onClick={handleLogout} >Logout</Link>
                     </button>
                 </div>

@@ -2,6 +2,8 @@ import React from 'react'
 import HomeLayouts from '../Layouts/HomeLayouts'
 import { Link } from 'react-router-dom'
 import homepageimage from "../assets/homepage-image.png"
+import homePageMainImage from "../Assets/Images/homePageMainImage.png";
+
 export default function HomePage() {
 return (
     <HomeLayouts>
@@ -32,7 +34,7 @@ return (
 
                     </div>
                     <div className='w-1/2 flex items-center justify-center ' >
-                    <img className='w-150' src={homepageimage}alt="homepage image" />
+                    <img className='w-150' src={homePageMainImage}alt="homepage image" />
                     </div>
             </div>
     </HomeLayouts>
