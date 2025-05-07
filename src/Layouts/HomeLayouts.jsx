@@ -102,11 +102,11 @@ export default function HomeLayouts({children}) {
             {
               isLoggedIn &&(
                 <li className='absolute bottom-4 w-full' >
-                <div className='w-full flex items-center justify-center  ' >
-                    <button className='btn btn-primary  px-4 py-1 font-semibold rounded-md w-full ' >
+                <div className='w-[95%] flex items-center justify-center  ' >
+                    <button className=' btn btn-soft btn-primary  px-2 py-1 font-semibold rounded-md w-1/2 gap-2' >
                         <Link to="/user/profile" >Profile</Link>
                     </button>
-                    <button className='btn btn-secondary px-4 py-1 font-semibold rounded-md w-full ' >
+                    <button className='btn  btn-soft btn-secondary px-2 py-1 font-semibold rounded-md w-1/2 gap-2' >
                         <Link onClick={handleLogout} >Logout</Link>
                     </button>
                 </div>

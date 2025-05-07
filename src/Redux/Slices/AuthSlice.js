@@ -32,11 +32,42 @@ export const createAccount=createAsyncThunk("/auth/signup",async(data)=>{
   }
 })
 
+export const login=createAsyncThunk("/auth/login",async(data)=>{
+  try{
+    const res=axiosInstance.post("user/login",data);
+    toast.promise(res,{
+      loading:"Wait authentication in process",
+      success:(data)=>{
+        return data?.data?.message || "user loggedin successfully"
+      },
+      error:"failed to loggedin"
+    },{
+      loading:toastStyles.loading,
+      success:toastStyles.success,
+      error:toastStyles.error
+    })
+    return (await res).data;
+  }catch(error){
+    toast.error(error?.response?.data?.message,toastStyles.error);
+  }
+})
+
 //This creates a "slice" (a section of our app’s state) for authentication (login/logout stuff) using the createSlice tool.
 const authSlice=createSlice({
     name:"auth",
     initialState,
     reducers:{},
+    extraReducers:(builder)=>{
+      //login fullfilled hone pe ek reducer object bannani hai 
+      builder.addCase(login.fulfilled,(state,action)=>{
+        localStorage.setItem("data",JSON.stringify(action?.payload?.user));
+        localStorage.setItem("isLoggedIn",true);
+        localStorage.setItem("role",action?.payload?.user?.role);
+        state.isLoggedIn=true;
+        state.data=action?.payload?.user;
+        state.role=action?.payload?.user?.role
+      })
+    }
 });
 
 export const{}=authSlice.actions;
