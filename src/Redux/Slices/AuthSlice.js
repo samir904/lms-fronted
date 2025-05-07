@@ -52,6 +52,26 @@ export const login=createAsyncThunk("/auth/login",async(data)=>{
   }
 })
 
+export const logout=createAsyncThunk("/auth/logout",async()=>{
+  try{
+    const res=axiosInstance.get("user/logout")
+    toast.promise(res,{
+      loading:"wait logout in process",
+      success:(data)=>{
+        return data?.data?.message ||"user loggeout successfully "
+      },
+     error:"failed to logout"
+    },{
+      loading:toastStyles.loading,
+      success:toastStyles.success,
+      error:toastStyles.error
+    })
+    return (await res).data;
+  }catch(error){
+    toast.error(error?.response?.data?.message,toastStyles.error)
+  }
+})
+
 //This creates a "slice" (a section of our app’s state) for authentication (login/logout stuff) using the createSlice tool.
 const authSlice=createSlice({
     name:"auth",
@@ -66,6 +86,12 @@ const authSlice=createSlice({
         state.isLoggedIn=true;
         state.data=action?.payload?.user;
         state.role=action?.payload?.user?.role
+      })
+      builder.addCase(logout.fulfilled,(state)=>{
+        localStorage.clear();
+        state.data={};
+        state.isLoggedIn=false;
+        state.role="";
       })
     }
 });
