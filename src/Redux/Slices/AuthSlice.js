@@ -1,5 +1,7 @@
-import { createSlice } from "@reduxjs/toolkit";
-
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import toast from "react-hot-toast";
+import axiosInstance from "../../helpers/axiosInstace.js"
+import toastStyles from "../../Helper/Toaststyle.js";
 //This starts defining the starting point (initial state) for our user login information. It’s like setting up a default situation before anything happens.
 const initialState={
     //to check the user is logged in in or not based on this condition we will change ui for logged in user logout for not logged in user signin and signup
@@ -8,6 +10,27 @@ const initialState={
     role:localStorage.getItem("role")||"",
     data:localStorage.getItem("data") || {}
 }
+
+export const createAccount=createAsyncThunk("/auth/signup",async(data)=>{
+  try{
+    const res=axiosInstance.post("user/register",data)
+     
+    toast.promise(res,{
+      loading:"wait creating your account",
+      success:(data)=>{
+        return data?.data?.message || "Account created successfully!";
+      },
+      error:"Failed to create account"
+    },{
+      loading: toastStyles.loading,
+      success: toastStyles.success,
+      error: toastStyles.error,
+  })
+    return (await res).data;
+  }catch(e){
+    toast.error(e?.reponse?.data?.message)
+  }
+})
 
 //This creates a "slice" (a section of our app’s state) for authentication (login/logout stuff) using the createSlice tool.
 const authSlice=createSlice({
