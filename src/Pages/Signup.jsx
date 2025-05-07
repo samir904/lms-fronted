@@ -6,6 +6,7 @@ import { useDispatch } from 'react-redux';
 import toast from "react-hot-toast"
 import toastStyles from '../Helper/Toaststyle';
 import {createAccount} from "../Redux/Slices/AuthSlice.js"
+import { isEmail, isValidPassword } from '../helpers/regexMatch.js';
 export default function Signup() {
     const dispatch=useDispatch();
     const navigate=useNavigate();
@@ -53,14 +54,11 @@ export default function Signup() {
     //checking name field length
     if(signupData.fullName.length<5){
         toast.error("Name should be atleast 5 character",toastStyles.error)}
-        if(!signupData.email.match(
-            /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-          )){
+        if(!isEmail(signupData.email)){
             toast.error("Invalid email id")
             return;
           }
-          if(!signupData.password.match(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/
-)){
+          if(!isValidPassword( signupData.password)){
     toast.error("Your password must be at least 8 characters long and include at least one lowercase letter, one uppercase letter, one number, and one special character",toastStyles.error)
     return;
 }
