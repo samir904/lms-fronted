@@ -71,6 +71,38 @@ export const logout=createAsyncThunk("/auth/logout",async()=>{
     toast.error(error?.response?.data?.message,toastStyles.error)
   }
 })
+export const updateProfile=createAsyncThunk("/user/update",async(data)=>{ //we cant pass two parameter so if you want pass the pass it in array form and access them as indexx arr
+  console.log(data)
+  try{
+    const res=axiosInstance.put(`user/update`,data)//data[0] ,data[1]
+     
+    toast.promise(res,{
+      loading:"wait profile update in progress",
+      success:(data)=>{
+        return data?.data?.message || "Update profile successfully!";
+      },
+      error:"Failed to update profile"
+    },{
+      loading: toastStyles.loading,
+      success: toastStyles.success,
+      error: toastStyles.error,
+  })
+    return (await res).data;
+  }catch(e){
+    toast.error(e?.reponse?.data?.message)
+  }
+})
+
+export const getUserdata=createAsyncThunk("/user/details",async(id,data)=>{
+  try{
+    const res=axiosInstance.get(`user/me`)
+    
+    return (await res).data;
+  }catch(e){
+    toast.error(e.message)
+  }
+})
+
 
 //This creates a "slice" (a section of our app’s state) for authentication (login/logout stuff) using the createSlice tool.
 const authSlice=createSlice({
@@ -92,6 +124,14 @@ const authSlice=createSlice({
         state.data={};
         state.isLoggedIn=false;
         state.role="";
+      })
+      builder.addCase(getUserdata.fulfilled,(state,action)=>{
+        localStorage.setItem("data",JSON.stringify(action?.payload?.user));
+        localStorage.setItem("isLoggedIn",true);
+        localStorage.setItem("role",action?.payload?.user?.role);
+        state.isLoggedIn=true;
+        state.data=action?.payload?.user;
+        state.role=action?.payload?.user?.role
       })
     }
 });
