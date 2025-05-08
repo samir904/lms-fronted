@@ -8,7 +8,7 @@ const initialState={
     //This checks if the user is logged in. It looks in localStorage (a place in the browser to store data) for a value called isLoggedIn. If it’s the string "true", set isLoggedIn to true. If not, set it to false.
     isLoggedIn:localStorage.getItem('isLoggedIn') || false,
     role:localStorage.getItem("role")||"",
-    data:localStorage.getItem("data") || {}
+    data:JSON.parse( localStorage.getItem("data") )|| {}//string to js object json.parse
 }
 
 export const createAccount=createAsyncThunk("/auth/signup",async(data)=>{
