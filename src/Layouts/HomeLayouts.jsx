@@ -73,8 +73,15 @@ export default function HomeLayouts({children}) {
 
             {isLoggedIn&&role==="ADMIN"&&(
               <li>
-                <Link to="/admin/dashboard" >Admin/dashboard</Link>
+                <Link to="/admin/dashboard" >Admin dashboard</Link>
               </li>
+              
+            )}
+            {isLoggedIn&&role==="ADMIN"&&(
+              <li>
+                <Link to="/course/create" >create new course</Link>
+              </li>
+              
             )}
 
             <li>
