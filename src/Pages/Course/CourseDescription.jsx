@@ -36,7 +36,7 @@ export default function CourseDescription() {
                     </div>
                     {
                         role==="ADMIN" || data?.subscription?.status==="active"?(
-                            <button className='cursor-pointer bg-yellow-600 text-xl rounded-md  font-bold px-5 py-3 w-full transition-all hover:bg-yellow-500 ease-in-out ' >
+                            <button onClick={()=>navigate("/course/displaylectures",{state:{...state}})} className='cursor-pointer bg-yellow-600 text-xl rounded-md  font-bold px-5 py-3 w-full transition-all hover:bg-yellow-500 ease-in-out ' >
                                 Watch lectures
                             </button>
                         ):(

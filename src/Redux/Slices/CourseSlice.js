@@ -20,7 +20,7 @@ export const getAllcourse=createAsyncThunk("/course/get",async()=>{
             error:toastStyles.error
         })
 
-        return (await (res)).data.courses;
+        return (await res).data.courses;
 
     }catch(error){
         toast.error(error?.response?.data?.message)

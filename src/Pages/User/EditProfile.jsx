@@ -58,9 +58,9 @@ export default function EditProfile() {
     }
   return (
     <HomeLayouts>
-        <div className='flex items-center justify-center h-[100vh]' >
+        <div className='flex  items-center justify-center h-[100vh]' >
             <form
-            className='flex flex-col justify-center gap-5 rounded-lg text-white w-80 min-h-[26rem] shadow-[0_0_10px_black] '
+            className='flex p-4 flex-col justify-center gap-5 rounded-lg text-white w-80 min-h-[26rem] shadow-[0_0_10px_black] '
             onSubmit={onformsubmit}
              action="">
                 <h1 className='text-center tex-2xl font-semibold ' >
@@ -74,7 +74,7 @@ export default function EditProfile() {
                         className='w-28 h-28 rounded-full m-auto'
                          src={data.previewImage} alt="" />
                     ):(
-                        <PersonIcon className='w-28 h-28 rounded-full m-auto' />
+                        <PersonIcon className='w-28 h-28 rounded-full m-auto'style={{ width: '96px', height: '96px',margin:"auto"}} />
                     )}
                 </label>
                 <input
