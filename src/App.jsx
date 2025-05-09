@@ -1,7 +1,6 @@
 import React from 'react'
 import './App.css'
 import { Route, Routes } from 'react-router-dom'
-import HomeLayouts from './Layouts/HomeLayouts'
 import HomePage from './Pages/HomePage'
 import AboutUs from './Pages/AboutUs'
 import NotFound from './Pages/NotFound'
@@ -20,6 +19,7 @@ import CheckoutSuccess from './Pages/Payments/CheckoutSuccess'
 import CheckoutFailure from './Pages/Payments/CheckoutFail'
 import DisplayLectures from './Pages/Dashboard/DisplayLectures'
 import AddLecture from './Pages/Dashboard/AddLecture'
+import AdminDashboard from './Pages/Dashboard/AdminDashboard'
 
 function App() {
  
@@ -40,6 +40,7 @@ function App() {
         <Route element={<RequireAuth allowedRoles={["ADMIN"]} />}  >
           <Route path='/course/create' element={<CreateCourse/>} ></Route>
           <Route path='/course/addlecture' element={<AddLecture/>} ></Route>
+          <Route path='/admin/dashboard' element={<AdminDashboard/>} ></Route>
         </Route>
 
         <Route element={<RequireAuth  allowedRoles={["ADMIN","USER"]} />} allowedRoles={["ADMIN","USER"]} >

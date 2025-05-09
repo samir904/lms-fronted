@@ -2,7 +2,6 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit"
 import toast from "react-hot-toast"
 import toastStyles from "../../Helper/Toaststyle"
 import axiosInstance from "../../helpers/axiosInstace"
-import { data } from "react-router-dom"
 
 const initialState={
     key:"",
