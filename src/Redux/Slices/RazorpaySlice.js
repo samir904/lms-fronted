@@ -25,15 +25,16 @@ export const getRazorPayId=createAsyncThunk("/razorpay/getId",async()=>{
 export const purchaseCourseBundle=createAsyncThunk("/purchsecourse",async()=>{
     try{
         const res=await axiosInstance.post("/payments/subscribe");
+        
         return res.data
     }catch(error){
         toast.error(error?.response?.data?.message,toastStyles.error)
     }
 })
 
-export const verifyUserPayment=createAsyncThunk("/payments/verify",async()=>{
+export const verifyUserPayment=createAsyncThunk("/payments/verify",async(data)=>{
     try{
-        const res=await axiosInstance.get("/payments/verify",{
+        const res=await axiosInstance.post("/payments/verify",{
             razorpay_payment_id:data.razorpay_payment_id,
             razorpay_subscription_id:data.razorpay_subscription_id,
             razorpay_signature:data.razorpay_signature
@@ -86,13 +87,16 @@ const razorPaySlice=createSlice({
             state.key=action?.payload?.key;
         })
         .addCase(purchaseCourseBundle.fulfilled,(state,action)=>{
+            
             state.subscription_id=action?.payload?.subscription_id;
         })
         .addCase(verifyUserPayment.fulfilled,(state,action)=>{
+            console.log(action)
             toast.success(action?.payload?.message,toastStyles.success)
             state.isPaymentVerified=action?.payload?.success;
         })
         .addCase(verifyUserPayment.rejected,(state,action)=>{
+            console.log(action)
             toast.error(action?.payload?.message,toastStyles.error)
             state.isPaymentVerified=action?.payload?.success;
         })
