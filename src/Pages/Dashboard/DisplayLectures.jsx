@@ -34,13 +34,9 @@ export default function DisplayLectures() {
           <div className='flex flex-col gap-10 items-center justify-center min-h-[90vh] py-10 text-white mx-[5%]' >
               <div className='text-center text-2xl font-semibold text-yellow-500' >
                   Course name :{state?.title}
-                  { role==="ADMIN"&&(
-                            <button onClick={()=>navigate("/course/addlecture",{state:{...state}})} className='btn  btn-primary px-2 py-1 rounded-md font-semibold text-sm ' >
-                              Add new lecture
-                            </button>
-                          )}
+              
               </div>
-              { lectures&&lectures.length>0&& <div className='flex justify-center gap-10 w-full' >
+              { (lectures&&lectures.length>0)?( <div className='flex justify-center gap-10 w-full' >
                   {/*left section for playing vidos and displaying course details to admin */ }
                   <div className='space-y-5 w-[28rem] p-2 rounded-lg shadow-[0_0_10px_black] ' >
                     <video 
@@ -99,7 +95,15 @@ export default function DisplayLectures() {
                         
                       }
                     </ul>
-              </div>}
+              </div>):(
+                <div>
+                  { role==="ADMIN"&&(
+                            <button onClick={()=>navigate("/course/addlecture",{state:{...state}})} className='btn  btn-primary px-2 py-1 rounded-md font-semibold text-sm ' >
+                              Add new lecture
+                            </button>
+                          )}
+                </div>
+              )}
              
           </div>
     </HomeLayouts>
