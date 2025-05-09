@@ -20,7 +20,7 @@ export default function DisplayLectures() {
     }
 
     useEffect(()=>{
-        //console.log(state)//debug
+        console.log(state)//debug
         if(!state)navigate("/course")
             if(!state){
                 navigate("/courses")
