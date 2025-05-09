@@ -1,11 +1,30 @@
 import React, { useEffect } from 'react'
 import HomeLayouts from '../../Layouts/HomeLayouts'
 import { useDispatch, useSelector } from 'react-redux'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { cancelCourseBUndle } from '../../Redux/Slices/RazorpaySlice';
+import { getUserdata } from '../../Redux/Slices/AuthSlice';
+import toast from 'react-hot-toast';
+import toastStyles from '../../Helper/Toaststyle';
 
 export default function Profile() {
     const dispatch=useDispatch();
+    const navigate=useNavigate();
     const userData=useSelector((state)=>state?.auth?.data);
+
+    async function handleCancellation() {
+        toast("Initiating cancellation",toastStyles.info)
+        await dispatch(cancelCourseBUndle())
+        await dispatch(getUserdata());
+        toast.success("cancellation completed",toastStyles.success)
+        navigate("/")
+    }
+    useEffect(() => {
+        async function fetchUserData() {
+            await dispatch(getUserdata());
+        }
+        fetchUserData();
+    }, [dispatch]);
 
   return (
     <HomeLayouts>
@@ -44,7 +63,8 @@ export default function Profile() {
                  </div>
                  {
                     userData?.subscription?.status==="active" &&(
-                        <button
+                        <button 
+                        onClick={handleCancellation}
                          className='w-full bg-red-600 hover:bg-red-500 transition-all ease-in-out  duration-300 rounded-sm font-semibold py-2 cursor-pointer text-center ' >
                             Cancel Subscription
                         </button>
