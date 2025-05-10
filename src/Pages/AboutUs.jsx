@@ -2,13 +2,13 @@ import React from 'react'
 import HomeLayouts from '../Layouts/HomeLayouts'
 import aboutMainImage from "../assets/Images/aboutMainImage.png";
 
-import apj from "../assets/Images/QuotesPersonalityImage/apj.png";
-import billGates from "../assets/Images/QuotesPersonalityImage/billGates.png";
-import einstein from "../assets/Images/QuotesPersonalityImage/einstein.png";
-import nelsonMandela from "../assets/Images/QuotesPersonalityImage/nelsonMandela.png";
-import steveJobs from "../assets/Images/QuotesPersonalityImage/steveJobs.png";
+import apj from "../assets/images/QuotesPersonalityImage/apj.png";
+import billGates from "../assets/images/QuotesPersonalityImage/billGates.png";
+import einstein from "../assets/images/QuotesPersonalityImage/einstein.png";
+import nelsonMandela from "../assets/images/QuotesPersonalityImage/nelsonMandela.png";
+import steveJobs from "../assets/images/QuotesPersonalityImage/steveJobs.png";
 
-export default function AboutUs() {
+export default function AboutUs() {//billGates.png einstein.png  nelsonMandela.png steveJobs.png
 return (
     <HomeLayouts>
             <div className="pl-20 pt-10 flex flex-col text-white">
