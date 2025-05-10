@@ -1,12 +1,12 @@
 import React from 'react'
 import HomeLayouts from '../Layouts/HomeLayouts'
-import aboutMainImage from "../Assets/Images/aboutMainImage.png";
+import aboutMainImage from "../assets/Images/aboutMainImage.png";
 
-import apj from "../Assets/Images/QuotesPersonalityImage/apj.png";
-import billGates from "../Assets/Images/QuotesPersonalityImage/billGates.png";
-import einstein from "../Assets/Images/QuotesPersonalityImage/einstein.png";
-import nelsonMandela from "../Assets/Images/QuotesPersonalityImage/nelsonMandela.png";
-import steveJobs from "../Assets/Images/QuotesPersonalityImage/steveJobs.png";
+import apj from "../assets/Images/QuotesPersonalityImage/apj.png";
+import billGates from "../assets/Images/QuotesPersonalityImage/billGates.png";
+import einstein from "../assets/Images/QuotesPersonalityImage/einstein.png";
+import nelsonMandela from "../assets/Images/QuotesPersonalityImage/nelsonMandela.png";
+import steveJobs from "../assets/Images/QuotesPersonalityImage/steveJobs.png";
 
 export default function AboutUs() {
 return (
