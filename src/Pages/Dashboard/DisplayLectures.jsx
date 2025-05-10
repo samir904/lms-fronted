@@ -44,7 +44,7 @@ export default function DisplayLectures() {
                     muted
                     controlsList='nodownload'
                     controls
-                    className='object-fill rounded-tl-lg rounded-tr-lg w-full'
+                    className='object-fill rounded-tl-lg rounded-tr-lg shadow-yellow-500/50 w-full'
                     src={lectures&&lectures[currvideo]?.lecture?.secure_url}></video>
                     <div>
                       <h1>
