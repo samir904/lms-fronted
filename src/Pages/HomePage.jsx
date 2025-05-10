@@ -1,7 +1,7 @@
 import React from 'react'
 import HomeLayouts from '../Layouts/HomeLayouts'
 import { Link } from 'react-router-dom'
-import homePageMainImage from "../Assets/Images/homePageMainImage.png";
+import homePageMainImage from "../assets/images/homePageMainImage.png";
 
 export default function HomePage() {
 return (
