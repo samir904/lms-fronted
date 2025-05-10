@@ -1,6 +1,6 @@
 import React from 'react'
 import HomeLayouts from '../Layouts/HomeLayouts'
-import aboutMainImage from "../assets/Images/aboutMainImage.png";
+import aboutMainImage from "../assets/images/aboutMainImage.png";//aboutMainImage.png
 
 import apj from "../assets/images/QuotesPersonalityImage/apj.png";
 import billGates from "../assets/images/QuotesPersonalityImage/billGates.png";
